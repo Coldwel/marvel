@@ -22,9 +22,9 @@ TEXT_COLOR = "#fcbd19"
 ACCENT_COLOR = "#ed1d24"
 
 # Define custom font styles
-HEADER_FONT = ("Helvetica Neue", 18, "bold")
-LABEL_FONT = ("Helvetica Neue", 14)
-BUTTON_FONT = ("Helvetica Neue", 12, "bold")
+HEADER_FONT = ("Helvetica Neu", 18, "bold")
+LABEL_FONT = ("Helvetica Neu", 14)
+BUTTON_FONT = ("Helvetica Neu", 12, "bold")
 
 # Initialize the cache with a maximum size of 100 and expiration time of 1 hour
 cache = TTLCache(maxsize=100, ttl=3600)
@@ -147,8 +147,7 @@ class SearchApp:
             widget.destroy()
 
         if len(results) > 0:
-            canvas = tk.Canvas(self.results_frame, bg=BG_COLOR, bd=0, highlightthickness=0, height=400, width=600,
-                               yscrollincrement=2)
+            canvas = tk.Canvas(self.results_frame, bg=BG_COLOR, bd=0, highlightthickness=0, height=400, width=600)
             canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 
             scrollbar = tk.Scrollbar(self.results_frame, orient=tk.VERTICAL, command=canvas.yview)
@@ -187,14 +186,10 @@ class SearchApp:
 
                 comics_button = tk.Button(hero_info_frame, text="Comics", bg=ACCENT_COLOR, fg=SECONDARY_COLOR,
                                           font=BUTTON_FONT,
-                                          command=lambda url=result["comics_url"]: self.show_comics(url))
+                                          command=lambda url=result["comics_url"]: self.show_comics_window(url))
                 comics_button.pack(pady=5, anchor="w")
 
-                hero_info_frame.bind("<Enter>", lambda e, b=comics_button: b.config(fg=BG_COLOR, bg=ACCENT_COLOR))
-                hero_info_frame.bind("<Leave>",
-                                     lambda e, b=comics_button: b.config(fg=ACCENT_COLOR, bg=SECONDARY_COLOR))
-
-    def show_comics(self, comics_url):
+    def show_comics_window(self, comics_url):
         if comics_url in cache:
             comics_list = cache[comics_url]
             self.display_comics_list(comics_list)
