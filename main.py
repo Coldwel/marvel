@@ -256,17 +256,5 @@ if __name__ == "__main__":
     # Set the initial size of the main window
     root.geometry("800x600")
 
-    # Update the size of the comics window
-    def show_comics_window(url):
-        comics_window = tk.Toplevel(root)
-        comics_window.title("Comics List")
-
-        # Set the size of the comics window
-        comics_window.geometry("600x400")
-
-        # Call the show_comics method
-        app.show_comics(url)
-
-    app.show_comics = show_comics_window
-
     root.mainloop()
+
