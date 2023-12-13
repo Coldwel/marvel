@@ -1,0 +1,11 @@
+12 December 2023, v0.1.1
+- implemented thumbnail images of comics shown in list of comics after you press the 'comics' button.
+- added static Marvel logo to homescreen, so it doesn't look so empty.
+  - made a new static image method to handle that
+- changed the layout of the homescreen so search bar is under logo.
+- created new setup_search_frame() method to handle search elements.
+  - had to place() search elements in both homescreen and results screen.
+  - homescreen now uses focus() to start inside the query_entry() text box.
+  - created a frame to place the search results on for better layout control.
+- made scroll wheel function anywhere cursor was idle.
+- added debugging print() statements to search_api() method.

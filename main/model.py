@@ -52,3 +52,4 @@ class MarvelAPI:
                 results.append(item)
 
         return results
+
