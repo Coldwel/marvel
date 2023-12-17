@@ -13,7 +13,6 @@ The Marvel Comic Search application allows users to search for Marvel characters
 
 ### Prerequisites
 - Python 3.x
-- Required Python packages (install using `pip install -r requirements.txt`)
 
 ### Installation
 1. Clone the repository:
