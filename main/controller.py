@@ -9,9 +9,9 @@ class SearchController:
         self.PUBLIC_KEY = public_key
         self.PRIVATE_KEY = private_key
 
-    def search(self, query):
+    def search(self, query, page=1):
         # Implement the search logic using MarvelAPI
-        return self.marvel_api.search_characters(query)
+        return self.marvel_api.search_characters(query, page)
 
     def generate_hash(self, timestamp):
         hash_input = timestamp + self.PRIVATE_KEY + self.PUBLIC_KEY

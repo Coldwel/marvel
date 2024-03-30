@@ -6,8 +6,8 @@ import hashlib
 with open("config.json") as f:
     config = json.load(f)
 
-PUBLIC_KEY = config["MARVEL_PUBLIC_KEY"]
-PRIVATE_KEY = config["MARVEL_PRIVATE_KEY"]
+PUBLIC_KEY = config['MARVEL_PUBLIC_KEY']
+PRIVATE_KEY = config['MARVEL_PRIVATE_KEY']
 
 MARVEL_CHARACTER_URL = "http://gateway.marvel.com/v1/public/characters"
 
@@ -22,7 +22,7 @@ class MarvelAPI:
         md5_hash = hashlib.md5(hash_input.encode('utf-8')).hexdigest()
         return md5_hash
 
-    def search_characters(self, query):
+    def search_characters(self, query, page=1):
         timestamp = "1"
         md5_hash = self.generate_hash(timestamp)
 
@@ -34,7 +34,9 @@ class MarvelAPI:
             "ts": timestamp,
             "apikey": self.public_key,
             "hash": md5_hash,
-            "nameStartsWith": query
+            "nameStartsWith": query,
+            "offset": (page - 1) * 25,
+            "limit": 25
         }
         response = requests.get(MARVEL_CHARACTER_URL, headers=headers, params=params)
         data = response.json()

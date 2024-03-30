@@ -1,8 +1,26 @@
 # Changelog
 
-### [Version 0.1.2]
+## [Version 0.1.4]
 
-### [16 December 2023]
+### [30 March 2024]
+
+- **Feature**: Pagination implemented
+  - Introduced pagination functionality to the search results and comics list.
+  - Added "Previous" and "Next" buttons to navigate through multiple pages of results.
+  - Implemented logic to disable the "Previous" button on the first page and the "Next" button on the last page.
+  - Updated the `display_comic_page` method to handle the creation and deletion of the comics frame correctly.
+  - Resolved the `KeyError` issue when navigating through comic pages.
+
+- **Readability Improvement**: Total class overhaul
+  - Refactored the `SearchView` class for better code organization and readability.
+  - Moved the `display_comic_page` method outside of the `display_comics_list` method and made it an instance method of the `SearchView` class.
+  - Introduced the `change_comic_page` method to handle page navigation in the comics list.
+  - Stored the `comics_list` as an instance variable in the `SearchView` class for easier access within methods.
+  - Updated method signatures and calls to reflect the changes in the class structure.
+
+## [Version 0.1.3]
+
+### [19 December 2023]
 
 - **Feature**: Asynchronous Fetching of Comics Data
   - Introduced an asynchronous function `fetch_comics_data` for fetching data from the comics API using `aiohttp`.
@@ -13,6 +31,8 @@
   - Organized tasks and TODO items in `TODO.md`.
   - Updated and reorganized changelog for better clarity.
   - Updated the 'README.md' for a more detailed description of the project.
+
+## [Version 0.1.2]
 
 ### [14-15 December 2023]
 
