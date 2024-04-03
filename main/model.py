@@ -2,12 +2,21 @@
 import json
 import requests
 import hashlib
+from mysql.connector import Error
+from mysql.connector.connection import MySQLConnection
 
 with open("config.json") as f:
     config = json.load(f)
 
 PUBLIC_KEY = config['MARVEL_PUBLIC_KEY']
 PRIVATE_KEY = config['MARVEL_PRIVATE_KEY']
+
+db_config = {
+    'host': 'localhost',
+    'user': 'root',
+    'password': 'root',
+    'database': 'marvel_db'
+}
 
 MARVEL_CHARACTER_URL = "http://gateway.marvel.com/v1/public/characters"
 
@@ -55,3 +64,21 @@ class MarvelAPI:
 
         return results
 
+
+class Database:
+    def __init__(self, config):
+        self.config = config
+
+    def __enter__(self):
+        try:
+            self.conn = MySQLConnection(**self.config)
+            print("Connected to the MySQL database")
+            return self.conn
+        except Error as e:
+            print(f"Error connecting to the MySQL database: {e}")
+            raise
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        if self.conn:
+            self.conn.close()
+            print("Disconnected from the MySQL database")
