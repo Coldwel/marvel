@@ -1,5 +1,39 @@
 # Changelog
 
+## [Version 0.1.6]
+
+### [1 April 2024]
+
+- **Feature**: User Login and Registration
+  - Implemented user login and registration functionality with database integration.
+  - Added a login section below the search bar on the main screen.
+  - Users can enter their username (email) and password to log in.
+  - Provided a "Register" button that opens a registration window for new users.
+  - The registration window includes fields for name, email, password, and password confirmation.
+  - User information is securely stored in the database upon successful registration.
+  - Login credentials are validated against the database to authenticate users.
+  - Upon successful login, the login section is hidden, and a welcome message is displayed.
+  - Improved error handling and user feedback for login and registration processes.
+
+- **Feature**: Favorite List Functionality
+  - Implemented a favorite list feature that allows users to add and remove comics from their favorites.
+  - Added a "Favorite List" button that appears in the top left corner after a successful login.
+  - Clicking the "Favorite List" button opens a new window displaying the user's favorite comics.
+  - Each comic in the favorites window includes a "Remove" button to remove the comic from the list and the database.
+  - Updated the database schema to include a "favorites" table that associates favorite comics with user IDs.
+  - Modified the `SearchController` and `SearchView` classes to handle adding and removing comics from the favorites list.
+  - Implemented scroll wheel functionality in the favorites window for improved navigation.
+
+## [Version 0.1.5]
+
+### [31 March 2024]
+
+- **Feature**: Display Comic Prices
+  - Added functionality to display the price of each comic book in the comics list.
+  - Modified the `display_comic_page` method to extract the price value from the 'prices' dictionary in the comic_item.
+  - Created a price_label using tk.Label to display the price value or "Price: N/A" if the price information is not available.
+  - Positioned the price_label in the desired location within the new_comics_frame using grid.
+
 ## [Version 0.1.4]
 
 ### [30 March 2024]
